@@ -1,8 +1,7 @@
-SimpleChess:
+# SimpleChess:
 A simple chess game where you jump into an already ongoing chess game, and only have a limited number of moves to get the better of your opponent
 
-
-TODO:
+# TODO:
 - Visuals
   - Board
   - Pieces
