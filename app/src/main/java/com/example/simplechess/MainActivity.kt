@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBoard() {
-//        val pieces = listOf("Queen", "Pawn", "Knight", "King", "Bishop")
-        val pieces = listOf("Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn")
+        val pieces = listOf("Queen", "Pawn", "Knight", "King", "Bishop")
+//        val pieces = listOf("Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn", "Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn","Pawn")
         Log.i(TAG, "pieces: $pieces")
         chessGame = ChessGame(pieces)
         Log.i(TAG, "made chessGame Object")
@@ -40,5 +40,6 @@ class MainActivity : AppCompatActivity() {
         rvBoard.adapter = adapter
         rvBoard.setHasFixedSize(true)
         rvBoard.layoutManager = GridLayoutManager(this, 8)
+//        adapter.notifyDataSetChanged()
     }
 }
