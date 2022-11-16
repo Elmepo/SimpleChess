@@ -3,7 +3,6 @@ A simple chess game where you jump into an already ongoing chess game, and only 
 
 # TODO:
 - Visuals
-  - Board
   - Pieces
   - White/Black Pieces
   - Board is centered on the screen

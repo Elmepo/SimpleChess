@@ -52,6 +52,14 @@ class SimpleChessAdapter(
             val black = "#4A4A4A"
             val white = "#ECE3E3"
             boardPiece.setBackgroundColor(if (shouldBeWhite) Color.parseColor(black) else Color.parseColor(white))
+            // get the piece
+            try {
+                val p = pieces.first { it.position == position }
+                Log.i(TAG, "p is $p")
+                boardPiece.setImageResource(p.drawable)
+            } catch (e: Exception) {
+                Log.i("IGNORE", "$e")
+            }
         }
     }
 }
