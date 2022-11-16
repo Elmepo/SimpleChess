@@ -1,6 +1,7 @@
 package com.example.simplechess
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
@@ -34,36 +35,23 @@ class SimpleChessAdapter(
         return ViewHolder(view)
     }
 
-//    override fun getItemCount() = pieces.size
     override fun getItemCount() = 64
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(position)
         holder.bind(holder.adapterPosition)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val whiteBoardPiece = itemView.findViewById<ImageButton>(R.id.genericBoardPiece)
+        private val boardPiece = itemView.findViewById<ImageButton>(R.id.genericBoardPiece)
 
         fun bind(position: Int) {
             Log.i(TAG, "Position is $position")
-//            if (position % 2 == 0) {
-//                val chessPiece = pieces[position]
-//            }
-//            if (position > pieces.size - 1) {
-//                val chessPiece = pieces[0]
-//            } else {
-//                val chessPiece = pieces[position]
-//            }
-//            if (position % 2 == 0) {
-//                // board piece should be white
-//            } else {
-//                // board piece should be black
-//            }
             ////////// so bad
             val boardPositions: BooleanArray = booleanArrayOf(true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true)
             var shouldBeWhite = boardPositions[position]
-            whiteBoardPiece.setImageResource(if (shouldBeWhite) R.drawable.ic_white_board_piece else R.drawable.ic_black_board_piece)
+            val black = "#4A4A4A"
+            val white = "#ECE3E3"
+            boardPiece.setBackgroundColor(if (shouldBeWhite) Color.parseColor(black) else Color.parseColor(white))
         }
     }
 }
