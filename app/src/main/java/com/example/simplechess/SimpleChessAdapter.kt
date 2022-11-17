@@ -14,12 +14,17 @@ import kotlin.math.min
 
 class SimpleChessAdapter(
     private val context: Context,
-    private val pieces: List<ChessPiece>
+    private val pieces: List<ChessPiece>//,
+//    private val cardClickListener: CardClickListener
 ) : RecyclerView.Adapter<SimpleChessAdapter.ViewHolder>() {
 
     companion object {
         private const val TAG = "SimpleChessAdapter"
         private const val MARGIN_SIZE = 0
+    }
+
+    interface CardClickListener {
+        fun onCardClicked(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,21 +50,32 @@ class SimpleChessAdapter(
         private val boardPiece = itemView.findViewById<ImageButton>(R.id.genericBoardPiece)
 
         fun bind(position: Int) {
-            Log.i(TAG, "Position is $position")
+//            Log.i(TAG, "Position is $position")
             ////////// so bad
             val boardPositions: BooleanArray = booleanArrayOf(true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true, true, false, true, false, true, false, true, false, false, true, false, true, false, true, false, true)
             var shouldBeWhite = boardPositions[position]
             val black = "#4A4A4A"
             val white = "#ECE3E3"
             boardPiece.setBackgroundColor(if (shouldBeWhite) Color.parseColor(black) else Color.parseColor(white))
-            // get the piece
-            try {
-                val p = pieces.first { it.position == position }
-                Log.i(TAG, "p is $p")
-                boardPiece.setImageResource(p.drawable)
-            } catch (e: Exception) {
-                Log.i("IGNORE", "$e")
+            boardPiece.setOnClickListener {
+                Log.i(TAG, "Clicked on position $position")
+                try {
+                    val p = pieces.first { it.position == position }
+                    val x = p.drawable
+                    boardPiece.setImageResource(p.drawable)
+                    boardPiece.imageAlpha = if(p.color == "white") Color.parseColor("#FFFFFF") else Color.parseColor("#000000")
+                } catch (e: Exception) {
+                    boardPiece.setImageResource(R.drawable.ic_no_position)
+                }
             }
+            // get the piece
+//            try {
+//                val p = pieces.first { it.position == position }
+////                Log.i(TAG, "p is $p")
+//                boardPiece.setImageResource(p.drawable)
+//            } catch (e: Exception) {
+//                Log.i("IGNORE", "$e")
+//            }
         }
     }
 }

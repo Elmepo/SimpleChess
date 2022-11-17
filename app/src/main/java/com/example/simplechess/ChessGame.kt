@@ -14,6 +14,7 @@ class ChessGame(pieceNames: List<String>) {
     init {
         val randomisedPieces = pieceNames.shuffled()
         pieces = randomisedPieces.mapIndexed { idx, it ->
+            val positionOnBoard = (0..63).random()
             ChessPiece(idx, it, "white", R.drawable.ic_temp_icon)
         }
         Log.i(TAG, "Pieces: $pieces")
